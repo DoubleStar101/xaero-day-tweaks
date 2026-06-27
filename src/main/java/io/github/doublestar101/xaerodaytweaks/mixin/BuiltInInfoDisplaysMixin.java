@@ -1,5 +1,6 @@
 package io.github.doublestar101.xaerodaytweaks.mixin;
 
+import io.github.doublestar101.xaerodaytweaks.config.ConfigManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -22,6 +23,12 @@ public class BuiltInInfoDisplaysMixin {
             constant = @Constant(intValue = 1, ordinal = 0)
     )
     private static int adjustDayOffset(int constant) {
-        return 0;
+        var config = ConfigManager.getConfig();
+
+        if (!config.enabled) {
+            return constant;
+        }
+
+        return config.dayOffset;
     }
 }

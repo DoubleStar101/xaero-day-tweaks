@@ -1,7 +1,8 @@
 package io.github.doublestar101.xaerodaytweaks;
 
-import net.fabricmc.loader.api.FabricLoader;
+import io.github.doublestar101.xaerodaytweaks.config.ConfigWatcher;
 import io.github.doublestar101.xaerodaytweaks.config.ConfigManager;
+import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ public class XaeroDayTweaks implements ModInitializer {
 	public void onInitialize() {
 
 		ConfigManager.load();
+		ConfigWatcher.start();
 
 		String version = FabricLoader.getInstance()
 				.getModContainer(MOD_ID)
@@ -24,6 +26,9 @@ public class XaeroDayTweaks implements ModInitializer {
 				.getVersion()
 				.getFriendlyString();
 
-		LOGGER.info("Xaero Day Tweaks v{} initialized.", version);
+		LOGGER.info("Xaero Day Tweaks v{} initialized", version);
+		LOGGER.info("Enabled    : {}", ConfigManager.getConfig().enabled);
+		LOGGER.info("Day Offset : {}", ConfigManager.getConfig().dayOffset);
+		LOGGER.info("Live configuration reloading enabled.");
 	}
 }

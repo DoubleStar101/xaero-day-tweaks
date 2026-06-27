@@ -2,6 +2,7 @@ package io.github.doublestar101.xaerodaytweaks.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.doublestar101.xaerodaytweaks.XaeroDayTweaks;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.IOException;
@@ -50,8 +51,16 @@ public final class ConfigManager {
                 }
 
                 config = loaded;
+
+                // Clamp values to prevent absurd offsets.
+                config.dayOffset = Math.max(-1_000_000_000,
+                        Math.min(1_000_000_000, config.dayOffset));
             }
+
         } catch (Exception e) {
+
+            XaeroDayTweaks.LOGGER.warn("Config reload failed.", e);
+
             try {
                 if (Files.exists(CONFIG_PATH)) {
                     Files.copy(CONFIG_PATH, BACKUP_PATH, StandardCopyOption.REPLACE_EXISTING);
@@ -71,8 +80,9 @@ public final class ConfigManager {
             try (Writer writer = Files.newBufferedWriter(CONFIG_PATH)) {
                 GSON.toJson(config, writer);
             }
+
         } catch (IOException e) {
-            e.printStackTrace();
+            XaeroDayTweaks.LOGGER.error("Failed to save config.", e);
         }
     }
 }

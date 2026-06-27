@@ -6,8 +6,31 @@ By default, Xaero's Minimap starts counting at day 1, while vanilla Minecraft st
 
 ## Features
 
-* Synchronizes Xaero's day counter with vanilla Minecraft
-* Adds the ability to add a custom offset to the Xaero's minimap day counter
+* Synchronization of Xaero's day counter with vanilla Minecraft
+* The ability to add a custom offset to the Xaero's minimap day counter
+* Live configuration reloading without restarting the game
+
+## Configuration
+
+The configuration file is located at:
+
+config/xaerodaytweaks.json
+
+```json
+{
+  "enabled": true,
+  "dayOffset": 0
+}
+```
+
+### dayOffset
+
+| Value | Result                    |
+|------:|---------------------------|
+|     0 | Vanilla Day 0             |
+|     1 | Original Xaero's behavior |
+|     5 | Starts at Day 5           |
+|    -5 | Starts at Day -5          |
 
 ## Compatibility
 
