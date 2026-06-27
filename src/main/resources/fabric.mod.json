@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "xaerodaytweaks",
+	"version": "${version}",
+	"name": "Xaero Day Tweaks",
+	"description": "Synchronizes Xaero's Minimap day counter with Minecraft's vanilla day counter and provides configurable day display tweaks.",
+	"authors": [
+		"DoubleStar101"
+	],
+	"contact": {
+	},
+	"license": "MIT",
+	"icon": "assets/xaerodaytweaks/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.doublestar101.xaerodaytweaks.XaeroDayTweaks"
+		],
+		"client": [
+			"io.github.doublestar101.xaerodaytweaks.client.XaeroDayTweaksClient"
+		]
+	},
+	"mixins": [
+		"xaerodaytweaks.json",
+		{
+			"config": "xaero-day-tweaks.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*",
+		"xaerominimap": "*"
+	}
+}
