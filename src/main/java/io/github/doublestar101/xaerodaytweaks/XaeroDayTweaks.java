@@ -1,8 +1,8 @@
 package io.github.doublestar101.xaerodaytweaks;
 
+import net.fabricmc.loader.api.FabricLoader;
 import io.github.doublestar101.xaerodaytweaks.config.ConfigManager;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,10 +17,13 @@ public class XaeroDayTweaks implements ModInitializer {
 
 		ConfigManager.load();
 
-		LOGGER.info("Xaero Day Tweaks initialized.");
-	}
+		String version = FabricLoader.getInstance()
+				.getModContainer(MOD_ID)
+				.orElseThrow()
+				.getMetadata()
+				.getVersion()
+				.getFriendlyString();
 
-	public static Identifier id(String path) {
-		return Identifier.fromNamespaceAndPath(MOD_ID, path);
+		LOGGER.info("Xaero Day Tweaks v{} initialized.", version);
 	}
 }

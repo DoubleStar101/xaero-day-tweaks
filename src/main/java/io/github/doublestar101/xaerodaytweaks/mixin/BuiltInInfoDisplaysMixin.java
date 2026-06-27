@@ -21,7 +21,7 @@ public class BuiltInInfoDisplaysMixin {
             method = "lambda$static$14(Lxaero/hud/minimap/info/InfoDisplay;Lxaero/hud/minimap/info/render/compile/InfoDisplayCompiler;Lxaero/hud/minimap/module/MinimapSession;ILnet/minecraft/core/BlockPos;)V",
             constant = @Constant(intValue = 1, ordinal = 0)
     )
-    private static int xaeroDayTweaks$dayStartsAtZero(int constant) {
+    private static int adjustDayOffset(int constant) {
         return 0;
     }
 }

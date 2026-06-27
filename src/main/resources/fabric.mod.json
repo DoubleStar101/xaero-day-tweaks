@@ -15,17 +15,10 @@
 	"entrypoints": {
 		"main": [
 			"io.github.doublestar101.xaerodaytweaks.XaeroDayTweaks"
-		],
-		"client": [
-			"io.github.doublestar101.xaerodaytweaks.client.XaeroDayTweaksClient"
 		]
 	},
 	"mixins": [
-		"xaerodaytweaks.json",
-		{
-			"config": "xaero-day-tweaks.client.mixins.json",
-			"environment": "client"
-		}
+		"xaerodaytweaks.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",

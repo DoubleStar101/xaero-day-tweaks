@@ -14,12 +14,9 @@ repositories {
 }
 
 loom {
-	splitEnvironmentSourceSets()
-
 	mods {
 		"xaero-day-tweaks" {
 			sourceSet sourceSets.main
-			sourceSet sourceSets.client
 		}
 	}
 }
